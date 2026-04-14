@@ -5,6 +5,7 @@ import 'package:portfolio/screens/footer.dart';
 import 'package:portfolio/screens/hero.dart';
 import 'package:portfolio/screens/navbar.dart';
 import 'package:portfolio/screens/projects.dart';
+import 'package:portfolio/screens/tech_stack.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +50,8 @@ class _MyAppState extends State<MyApp> {
                     child: const BrutalHero(),
                   ),
                 ),
-                const SliverToBoxAdapter(child: AboutBentoSection()),
+                const SliverToBoxAdapter(child: TechStack()),
+                // // const SliverToBoxAdapter(child: AboutBentoSection()),
                 const SliverToBoxAdapter(child: ProjectCarousel()),
                 const SliverToBoxAdapter(child: ContactNextLevel()),
                 const SliverToBoxAdapter(child: FooterSection()),

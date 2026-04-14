@@ -17,9 +17,9 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
   bool isUserInteracting = false;
 
   final List<String> images = [
-    "assets/images/app1.png",
-    "assets/images/app2.png",
-    "assets/images/app3.png",
+    "assets/images/app1.webp",
+    "assets/images/app1.webp",
+    "assets/images/app1.webp",
   ];
 
   @override

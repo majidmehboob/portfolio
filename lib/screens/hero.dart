@@ -9,6 +9,7 @@ class BrutalHero extends StatelessWidget {
       backgroundColor: const Color(0xFFFFD23E),
       body: Stack(
         children: [
+
           // 🔥 LEFT SIDE BRUTAL ELEMENT
           Positioned(
             left: -40,
@@ -64,74 +65,71 @@ class BrutalHero extends StatelessWidget {
 
           // 🎯 CENTER CONTENT
           Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // 👋 Small intro
-                  Text(
-                    "Hello, I'm",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black.withOpacity(0.6),
-                      letterSpacing: 1.2,
-                    ),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 750,),
+              child: Container(
+
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/splash.png"),
+                    fit: BoxFit.cover,
                   ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                  const SizedBox(height: 10),
-
-                  // 🔥 BIG NAME
-                  const Text(
-                    "Majid Mehboob",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900,
-                      color: Color(0xFF272723),
-                      height: 1.1,
-                    ),
-                  ),
-
-                  const SizedBox(height: 14),
-
-                  // 💻 ROLE
-                  Text(
-                    "Flutter Developer crafting bold digital experiences",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black.withOpacity(0.7),
-                      height: 1.5,
-                    ),
-                  ),
-
-                  const SizedBox(height: 30),
-
-                  // 🎯 CTA BUTTON
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 28, vertical: 16),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF272723),
-                        border: Border.all(
-                          color: const Color(0xFF272723),
-                          width: 2,
-                        ),
-                      ),
-                      child: const Text(
-                        "VIEW PROJECTS",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.5,
-                        ),
+                    /// 🔥 LOGO
+                    Transform.translate(
+                      offset: Offset(40, -20),
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
+                        width: 200,
+                        height: 200,
                       ),
                     ),
-                  ),
-                ],
+
+                    const SizedBox(width: 60),
+
+                 Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              /// NAME
+                              const Text(
+                               "FLUTTER BIRD",// "Majid Mehboob",
+                                style: TextStyle(
+                                  fontSize: 50,
+                                  fontFamily: 'Knewave',
+                                  fontWeight: FontWeight.w900,
+                                  color: Color(0xFF272723),
+                                  height: 1.1,
+                                ),
+                              ),
+
+                              const SizedBox(height: 14),
+
+                              /// ROLE
+                              Text(
+                                "BUILDING BEAUTIFULL APPS \n WITH PERCISION AND DESIGN",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black.withOpacity(0.7),
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                  ],
+                ),
               ),
             ),
           ),
