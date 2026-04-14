@@ -44,10 +44,7 @@ class TechStack extends StatelessWidget {
                             height: 100,
                             color:Color(0xFF3A311A),
                           )),
-                          Expanded(child: Container(
-                            height: 100,
-                            color:Color(0xFF3A311A),
-                          ))
+                          Expanded(child: techStackSingleOne(iconName: 'flutter',title: 'Flutter'))
                         ],
                       )
                     ],
@@ -66,6 +63,24 @@ class TechStack extends StatelessWidget {
             ),
 
           )
+        ],
+      ),
+    );
+  }
+  Widget techStackSingleOne({required String iconName,required String title}){
+    return Container(
+      padding: EdgeInsets.all(20),
+      height: 100,
+      color:Color(0xFF3A311A),
+      child: Row(
+        spacing: 12,
+        children: [
+          Image.asset(
+            "assets/images/${iconName}.png",
+             color: Color(0xFFFED13E),
+
+            ),
+          Text(title)
         ],
       ),
     );
