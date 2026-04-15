@@ -9,148 +9,140 @@ class ContactNextLevel extends StatelessWidget {
       width: double.infinity,
       color: const Color(0xFFFFD23E),
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 🔥 TITLE
-          const Text(
-            "LET'S WORK TOGETHER",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w900,
-              color: Color(0xFF272723),
-              letterSpacing: 1.5,
-            ),
-          ),
-
-          const SizedBox(height: 20),
-
-          // 🧩 MAIN LAYOUT
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return Flex(
-                direction: constraints.maxWidth > 700
-                    ? Axis.horizontal
-                    : Axis.vertical,
+      child: Center(
+        child: Row(
+          children: [
+            Expanded(child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // 📇 LEFT INFO PANEL
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      margin: const EdgeInsets.all(8),
-                      padding: const EdgeInsets.all(20),
+                  Text("LETS BUILD\nTHE FUTURE.",style: TextStyle(
+                      letterSpacing: 1.5,
                       color: const Color(0xFF272723),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "MAJID MEHBOOB",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-
-                          const SizedBox(height: 10),
-
-                          Text(
-                            "Flutter Developer\nUI/UX Engineer\nFreelancer",
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
-                              height: 1.5,
-                            ),
-                          ),
-
-                          const SizedBox(height: 20),
-
-                          _infoTile("📧", "majid@example.com"),
-                          _infoTile("📍", "Faisalabad, Pakistan"),
-                          _infoTile("⚡", "Available for Freelance"),
-
-                          const SizedBox(height: 30),
-
-                          // 🔥 SMALL BRUTAL CTA
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            color: const Color(0xFFFAC302),
-                            child: const Text(
-                              "FAST RESPONSE ⚡",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF272723),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // 🧾 RIGHT FORM PANEL
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                      margin: const EdgeInsets.all(8),
-                      padding: const EdgeInsets.all(20),
-                      color: const Color(0xFF1E1E1E),
-                      child: Column(
-                        children: [
-                          _field("Your Name"),
-                          const SizedBox(height: 12),
-                          _field("Your Email"),
-                          const SizedBox(height: 12),
-                          _field("Project Details", maxLines: 5),
-
-                          const SizedBox(height: 20),
-
-                          // 🚀 SEND BUTTON
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFAC302),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "SEND MESSAGE",
-                                style: TextStyle(
-                                  color: Color(0xFF272723),
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1.2,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                      fontSize: 50,
+                      height: 1.2,
+                      fontWeight: FontWeight.bold
+                  ),),
+                  const SizedBox(height:10),
+                  infoSection("DIRECT CHANNEL","maijdmehboob1005@gmail.com"),
+                  infoSection("BASE OF OPERATIONS","Faisalabad,Pakistan"),
+                  const SizedBox(height:10),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      circleIcon(Icons.code),
+                      const SizedBox(width: 15),
+                      circleIcon(Icons.email),
+                      const SizedBox(width: 15),
+                      circleIcon(Icons.link),
+                    ],
                   ),
                 ],
-              );
-            },
-          ),
-        ],
+              ),
+            )),
+            Expanded(
+
+              child: Container(
+
+                margin: const EdgeInsets.all(8),
+                padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 60),
+                decoration: BoxDecoration(
+                  color:  Colors.white,
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _field("Your Name","Identification"),
+                    const SizedBox(height: 12),
+                    _field("Your Email","Electronic Mail"),
+                    const SizedBox(height: 12),
+                    _field("Project Details","Objective Description", maxLines: 5),
+
+                    const SizedBox(height: 20),
+
+                    // 🚀 SEND BUTTON
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF272723),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "SEND MESSAGE",
+                          style: TextStyle(
+                            color: const Color(0xFFFFD23E),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+  Widget circleIcon(IconData icon){
+    return CircleAvatar(
+      radius: 25,
+      backgroundColor: Color(0xFF272723),
+      child: Icon(icon,color:const Color(0xFFFFD23E), size:20),
+    );
+  }
+  Widget infoSection(String label,String content){
+    return Column(
+      spacing: 4,
+      crossAxisAlignment:CrossAxisAlignment.start,
+      children: [
 
-  Widget _field(String hint, {int maxLines = 1}) {
-    return TextField(
-      maxLines: maxLines,
-      style: const TextStyle(color: Colors.white),
-      cursorColor: const Color(0xFFFAC302),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
-        filled: true,
-        fillColor: Colors.black,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
+        Text(label,style: TextStyle(
+            color: Color(0xFF765B00),
+            fontWeight: FontWeight.bold
+        ),),
+        Text(content,style: TextStyle(
+            color: Color(0xFF241A00),
+            fontWeight: FontWeight.bold,
+            fontSize: 24
+        ),)
+      ],
+    );
+  }
+
+  Widget _field(String hint,String label, {int maxLines = 1}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 6,
+      children: [
+        Text(label,style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),),
+        TextField(
+          maxLines: maxLines,
+          style: const TextStyle(color: Colors.white),
+          cursorColor: const Color(0xFFFAC302),
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(color: Colors.black.withOpacity(0.4)),
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+              borderSide: BorderSide(color: Colors.black),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 

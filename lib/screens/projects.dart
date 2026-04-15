@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ProjectCarousel extends StatefulWidget {
@@ -10,11 +9,9 @@ class ProjectCarousel extends StatefulWidget {
 }
 
 class _ProjectCarouselState extends State<ProjectCarousel> {
-  final PageController _controller =
-  PageController(viewportFraction: 0.62, initialPage: 1000);
 
-  Timer? _timer;
-  bool isUserInteracting = false;
+
+
 
   final List<String> images = [
     "assets/images/app1.webp",
@@ -22,89 +19,59 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
     "assets/images/app1.webp",
   ];
 
-  @override
-  void initState() {
-    super.initState();
 
-    _timer = Timer.periodic(const Duration(seconds: 3), (_) {
-      if (_controller.hasClients && !isUserInteracting) {
-        _controller.nextPage(
-          duration: const Duration(milliseconds: 900),
-          curve: Curves.easeInOutCubic,
-        );
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanDown: (_) => setState(() => isUserInteracting = true),
-      onPanCancel: () => setState(() => isUserInteracting = false),
-      onPanEnd: (_) {
-        Future.delayed(const Duration(seconds: 2), () {
-          setState(() => isUserInteracting = false);
-        });
-      },
-      child: Container(
-        height: 600,
-        width: double.infinity,
-        color: const Color(0xFFFFD23E),
-        child: PageView.builder(
-          controller: _controller,
-          itemBuilder: (context, index) {
-            final image = images[index % images.length];
-
-            return AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                double value = 1.0;
-
-                if (_controller.position.haveDimensions) {
-                  value = (_controller.page! - index).abs();
-                  value = (1 - (value * 0.35)).clamp(0.75, 1.0);
-                }
-
-                final isActive = value > 0.95;
-
-                return Center(
-                  child: Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..scale(value)
-                      ..setEntry(3, 2, 0.001) // perspective
-                      ..rotateY((1 - value) * (index.isEven ? 0.25 : -0.25)),
-
-                    child: Container(
-                      width: 270,
-                      height: 540,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        boxShadow: [
-                          BoxShadow(
-                            color: isActive
-                                ? Colors.black.withOpacity(0.35)
-                                : Colors.black.withOpacity(0.15),
-                            blurRadius: isActive ? 30 : 15,
-                            offset: const Offset(0, 18),
-                          ),
-                        ],
-                      ),
-                      child: _buildPhone(image, isActive),
-                    ),
-                  ),
-                );
-              },
-            );
-          },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40,vertical: 40),
+      // height: 600,
+      width: double.infinity,
+      color: const Color(0xFF272723),
+      child:  Column(
+        spacing: 12,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("SELECTED WORKS",style: TextStyle(
+                    letterSpacing: 1.5,
+                    color: const Color(0xFFFFD23E),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16
+                ),),
+                Text("CASE STUDIES",style: TextStyle(
+                    letterSpacing: 1.5,
+                    color: const Color(0xFFFFFFFF),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold
+                ),),
+              ],
+            )
+          ],
         ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 20),
+            child: Container(
+              width: 270,
+              height: 540,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.35),
+                    offset: const Offset(0, 18),
+                  ),
+                ],
+              ),
+              child: _buildPhone(images[0],false),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -116,7 +83,7 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
         borderRadius: BorderRadius.circular(40),
         border: Border.all(
           color: isActive
-              ? const Color(0xFFFAC302)
+              ? const Color(0xFF32322E)//const Color(0xFFFAC302)
               : Colors.white24,
           width: 2,
         ),
@@ -127,27 +94,16 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
           borderRadius: BorderRadius.circular(32),
           child: Stack(
             children: [
-              // 📱 PARALLAX SCREEN
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, _) {
-                  double offset = 0;
-
-                  if (_controller.hasClients && _controller.page != null) {
-                    offset = (_controller.page! % images.length) * 10;
-                  }
-
-                  return Transform.translate(
-                    offset: Offset(0, offset * 0.5),
+            Transform.translate(
+                    offset: Offset(0, 10 * 0.5),
                     child: Image.asset(
                       image,
                       fit: BoxFit.cover,
                       height: double.infinity,
                       width: double.infinity,
                     ),
-                  );
-                },
-              ),
+                  ),
+
 
               // 🔝 NOTCH
               Align(

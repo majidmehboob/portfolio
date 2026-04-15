@@ -53,7 +53,10 @@ class _MyAppState extends State<MyApp> {
                 const SliverToBoxAdapter(child: TechStack()),
                 // // const SliverToBoxAdapter(child: AboutBentoSection()),
                 const SliverToBoxAdapter(child: ProjectCarousel()),
-                const SliverToBoxAdapter(child: ContactNextLevel()),
+                 SliverToBoxAdapter(child:SizedBox(
+                   height: MediaQuery.of(context).size.height,
+                   child: const ContactNextLevel(),
+                 ), ),
                 const SliverToBoxAdapter(child: FooterSection()),
               ],
             ),
