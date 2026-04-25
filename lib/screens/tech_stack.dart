@@ -207,7 +207,7 @@ class TechStack extends StatelessWidget {
             spacing: 12,
             children: [
               Container(
-                height: 300,
+                // height: 300,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     color: Color(0xFFFFF2D8),
@@ -222,12 +222,12 @@ class TechStack extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF272723),
                         height: 1.1,
-                        fontSize: 28
+                        fontSize: 24
                     ),),
                     Text(
                       "A software engineer dedicated to the flutter ecosystem. I bridge the gap between complex backend architectures and delightfull user interface.I dont just build apps,I engineer digital legacies.With a deep focus on clean architecture and pixel-perfect UI",
                       style: TextStyle(
-                          fontSize: 20
+                          fontSize: 16
 
                       ),
                     ),
@@ -241,8 +241,8 @@ class TechStack extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Majid Mehboob",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                            Text("Flutter Developer",style: TextStyle(fontSize: 16,color:Colors.grey.shade700, ),)
+                            Text("Majid Mehboob",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                            Text("Flutter Developer",style: TextStyle(fontSize: 14,color:Colors.grey.shade700, ),)
                           ],
                         )
                       ],
@@ -252,7 +252,7 @@ class TechStack extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(20),
-                height: 300,
+                height: 250,
                 decoration: BoxDecoration(
                     color:Color(0xFF241A00),
                     borderRadius: BorderRadius.circular(4.0)
@@ -264,7 +264,7 @@ class TechStack extends StatelessWidget {
                   children: [
                     Text("TECH STACK",style: TextStyle(
                         color: Color(0xFFFED13E),
-                        fontSize: 26,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold
                     ),),
                     Expanded(
@@ -274,7 +274,7 @@ class TechStack extends StatelessWidget {
 
                           /// 🔥 ROW 1 (Left → Right)
                           SizedBox(
-                            height: 90,
+                            height: 70,
                             child: AutoScrollRow(
                               reverse: false,
                               children: [
@@ -291,7 +291,7 @@ class TechStack extends StatelessWidget {
 
                           /// 🔥 ROW 2 (Right → Left)
                           SizedBox(
-                            height: 90,
+                            height: 70,
                             child: AutoScrollRow(
                               reverse: true,
                               children: [
@@ -311,7 +311,6 @@ class TechStack extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(20),
-                height: 300,
                 decoration: BoxDecoration(
 
                     border: Border.all(color: Color(0xFF241A00),width: 4),
@@ -326,7 +325,7 @@ class TechStack extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF272723),
                         height: 1.1,
-                        fontSize: 28
+                        fontSize: 24
                     ),),
                     const SizedBox(height: 10,),
                     timeLineSingleOne()
@@ -385,43 +384,44 @@ class TechStack extends StatelessWidget {
               Text(
                 "JULY-NOVEMBER",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
                 ),
               ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "2025",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.black45,
+                    ),
+                  ),
+                  Text(
+                    "WORK AS A JUNIOR FLUTTER DEVELOPER",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF8C7840),
+                    ),
+                  ),
+                ],
+              ),
               Text(
-                "2025",
+                "INTERNSHIP ON FLUTTER @ VISIT ITECH",
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black45,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF241A00),
                 ),
               ),
             ],
           ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 2,
-              children: [
-                Text(
-                  "INTERNSHIP ON FLUTTER @ VISIT ITECH",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF241A00),
-                  ),
-                ),
-                Text(
-                  "WORK AS A JUNIOR FLUTTER DEVELOPER",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF8C7840),
-                  ),
-                ),
-              ],
-            ),
+
           ],
         ),
         Divider( color: Color(0xFFE9CC7A),)
